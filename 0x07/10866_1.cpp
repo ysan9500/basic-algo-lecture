@@ -6,47 +6,57 @@ int main(void) {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  deque<int> DQ;
-  int n;
-  cin >> n;
-  while (n--) {
-    string q;
-    cin >> q;
-    if (q == "push_back") {
-      int val;
-      cin >> val;
-      DQ.push_back(val);
+  deque<int> dq;
+  int N;
+  cin >> N;
+  string cmd;
+  int num;
+
+  while(N--) {
+    cin >> cmd;
+    if(cmd == "push_front") {
+      cin >> num;
+      dq.push_front(num);
     }
-    else if (q == "push_front") {
-      int val;
-      cin >> val;
-      DQ.push_front(val);
+    else if(cmd == "push_back") {
+      cin >> num;
+      dq.push_back(num);
     }
-    else if(q == "pop_front"){
-      if(DQ.empty()) cout << -1 << '\n';
-      else{
-        cout << DQ.front() << '\n';
-        DQ.pop_front();
+    else if(cmd == "pop_front") {
+      if(dq.empty()) cout << -1;
+      else {
+        cout << dq.front();
+        dq.pop_front();
       }
+      cout << '\n';
     }
-    else if(q == "pop_back"){
-      if(DQ.empty()) cout << -1 << '\n';
-      else{
-        cout << DQ.back() << '\n';
-        DQ.pop_back();
+    else if(cmd == "pop_back") {
+      if(dq.empty()) cout << -1;
+      else {
+        cout << dq.back();
+        dq.pop_back();
       }
+      cout << '\n';
     }
-    else if (q == "size")
-      cout << DQ.size() << '\n';
-    else if (q == "empty")
-      cout << DQ.empty() << '\n';
-    else if (q == "front") {
-      if(DQ.empty()) cout << -1 << '\n';
-      else cout << DQ.front() << '\n';
+    else if(cmd == "size") {
+      cout << dq.size() << '\n';
     }
-    else { // back
-      if(DQ.empty()) cout << -1 << '\n';
-      else cout << DQ.back() << '\n';
+    else if(cmd == "empty") {
+      cout << (int)dq.empty() << '\n';
+    }
+    else if(cmd == "front") {
+      if(dq.empty()) cout << -1;
+      else {
+        cout << dq.front();
+      }
+      cout << '\n';
+    }
+    else if(cmd == "back") {
+      if(dq.empty()) cout << -1;
+      else {
+        cout << dq.back();
+      }
+      cout << '\n';
     }
   }
 }

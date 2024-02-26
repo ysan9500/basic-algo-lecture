@@ -1,4 +1,3 @@
-// http://boj.kr/702a66643c6245f6bc05cd760490c785
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -29,11 +28,11 @@ int main(void) {
     else if(cmd == "size") cout << q.size() << '\n';
     else if(cmd == "empty") cout << (int)q.empty() << '\n';
     else if(cmd == "front") {
-      if(q.empty()) cout << -1 << '\n';
+      if(q.empty()) cout << -1 <<'\n';
       else cout << q.front() << '\n';
     }
     else if(cmd == "back") {
-      if(q.empty()) cout << -1 << '\n';
+      if(q.empty()) cout << -1;
       else cout << q.back() << '\n';
     }
   }   

@@ -5,31 +5,30 @@ using namespace std;
 int main(void) {
   ios::sync_with_stdio(0);
   cin.tie(0);
-  int n;
-  cin >> n;
-  stack<int> S;
-  while(n--){ // n번 반복
-    string c;
-    cin >> c;
-    if(c=="push"){
-      int t;
-      cin >> t;
-      S.push(t);
+  stack<int> stack;
+  int N;
+  cin >> N;
+  string cmd;
+  int num;
+  while(N--) {
+    cin >> cmd;
+    if(cmd == "push") {
+      cin >> num;
+      stack.push(num);
     }
-    else if(c=="pop"){
-      if(S.empty()) cout << -1 << '\n';
-      else{
-        cout << S.top() << '\n';
-        S.pop();
+    else if(cmd == "pop") {
+      if(stack.empty()) cout << -1 << '\n';
+      else {
+        cout << stack.top() << '\n';
+        stack.pop();  
       }
     }
-    else if(c=="size")
-      cout << S.size() << '\n';
-    else if(c=="empty")
-      cout << (int)S.empty() << '\n';
-    else{ // top
-      if(S.empty()) cout << -1 << '\n';
-      else cout << S.top() << '\n';
+    else if(cmd == "size") cout << stack.size() << '\n';
+    else if(cmd == "empty") cout << (int)stack.empty() << '\n';
+    else if(cmd == "top") {
+      if(stack.empty()) cout << -1 << '\n';
+      else cout << stack.top() << '\n';
     }
   }
+  return 0;
 }

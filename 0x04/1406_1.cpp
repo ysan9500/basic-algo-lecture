@@ -3,35 +3,42 @@
 using namespace std;
 
 int main(void) {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-  string init;
-  cin >> init;
-  list<char> L;
-  for (auto c : init) L.push_back(c);
-  auto cursor = L.end();
-  int q;
-  cin >> q;
-  while (q--) {
-    char op;
-    cin >> op;
-    if (op == 'P') {
-      char add;
-      cin >> add;
-      L.insert(cursor, add);
+  list<char> word;
+  string initword;
+  cin >> initword;
+  for(char c : initword) {
+    word.push_back(c);
+  }
+  auto cursor = word.end(); //Returns an iterator referring to the past-the-end element in the list container.
+  int M;
+  cin >> M;
+  while(M--) {
+    char cmd;
+    cin >> cmd;
+    if(cmd == 'P') {
+      char c;
+      cin >> c;
+      word.insert(cursor, c);
     }
-    else if (op == 'L') {
-      if (cursor != L.begin()) cursor--;
+    else if(cmd == 'L') {
+      if(cursor != word.begin()) cursor--;
     }
-    else if (op == 'D') {
-      if (cursor != L.end()) cursor++;
+    else if(cmd == 'D') {
+      if(cursor != word.end()) cursor++;
     }
-    else { // 'B'
-      if (cursor != L.begin()) {
+    else if(cmd == 'B') {
+      if(cursor != word.begin()) {
         cursor--;
-        cursor = L.erase(cursor);
+        cursor = word.erase(cursor);
       }
     }
+    /*
+    cout << "output: ";
+    for(auto i : word) cout  << i;
+    cout << " cursor: " << *cursor;
+    cout << '\n';
+    */
   }
-  for (auto c : L) cout << c;
+  for(auto i : word) cout << i;
+  return 0;
 }

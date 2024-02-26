@@ -14,7 +14,16 @@ int func3(int N){
 }
 
 int func4(int N){
-  return -1;
+  /*
+  int ans = 0;
+  for(int i = 1; pow(2, i) <= N; i++) {
+    ans = pow(2, i);
+  }
+  return ans;
+  */
+  int ans = 1;
+  while(2*ans <= N) ans *= 2;
+  return ans;
 }
 
 void test1(){

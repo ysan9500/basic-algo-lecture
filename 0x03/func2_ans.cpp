@@ -1,9 +1,12 @@
-int func2(int arr[], int N){
-  int occur[101] = {};
-  for(int i = 0; i < N; i++){
-    if(occur[100-arr[i]] == 1)
+int func2(int arr[], int N) {
+  int count[101] = {0};
+  for(int i = 0; i < N; i++) {
+    if(count[100 - arr[i]] > 0) {
       return 1;
-    occur[arr[i]] = 1;
+    }
+    else {
+      count[arr[i]]++;
+    }
   }
   return 0;
 }
