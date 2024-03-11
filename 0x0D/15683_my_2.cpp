@@ -8,7 +8,7 @@ int dir[8][8]; // direction of each CCTV: 0,1,2,3
 bool iswatched[8][8];
 int min_area = 64;
 
-void rotate(int x, int y);
+void rotate(int x, int y, int r);
 int area();
 void func(int k);
 void watch(int x, int y, int d);
@@ -24,13 +24,13 @@ int main() {
             cctv.push_back({i, j});
         }
     }// 1. get sthe size and elements of array, and count cctv.
-    func(0);// 2. get the minimum blint area by rotate() + area().
+    func(0);// 2. get the minimum blind area by rotate() + area().
     cout << min_area;
     return 0;
 }
 
-void rotate(int x, int y) {
-    dir[x][y] = (dir[x][y] + 1) % 4;
+void rotate(int x, int y, int r) {
+    dir[x][y] = (dir[x][y] + r) % 4;
 } // Gets the coordination of the CCTV and turn it by 90 degrees.
 
 void watch(int x, int y, int d) {
@@ -106,17 +106,17 @@ void func(int k) {
         int i = c.first; int j = c.second;
         func(k + 1);
         if(arr[i][j] == 5) continue;
-        rotate(i, j);
+        rotate(i, j, 1);
         func(k + 1);
         if(arr[i][j] == 2) {
-            rotate(i, j); rotate(i, j); rotate(i, j);
+            rotate(i, j, -1);
             continue;
         }
-        rotate(i, j);
+        rotate(i, j, 1);
         func(k + 1);
-        rotate(i, j);
+        rotate(i, j, 1);
         func(k + 1);
-        rotate(i, j);
+        rotate(i, j, -3);
     } // If encounter cctv, skip k cctv and rotate, run func(k+1).
 }
 // 처음에 cctv개수를 셀 때 개수만 셀 게 아니라 좌표까지 저장하면 cctv 위치를 찾는 N^2의 시간을 아낄 수 있음.
